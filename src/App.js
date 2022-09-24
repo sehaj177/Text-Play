@@ -3,7 +3,7 @@ import './App2.css';
 import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import Api from './components/Api';
+
 import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -33,9 +33,9 @@ function App() {
       <Router>
         <Navbar title="PROJECT" mode={mode} aboutText="About Project" toggleMode={toggleMode} />
         <div className="container">
-          <Api/>
+      
           <Routes>
-            <Route exact path="/about" element={<About />} />
+            <Route exact path="/about" element={<About mode={mode}/>} />
             <Route exact path="/" element={<TextForm heading="Enter The Text To Analyse" mode={mode} />} />
           </Routes>
         </div><hr />

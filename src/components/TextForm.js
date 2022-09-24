@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './TextForm.css'
 export default function TextForm(props) {
     const [text, setText] = useState('');
     const handleUpClick = () => {
@@ -24,28 +25,31 @@ export default function TextForm(props) {
     }
 
     const handleOnChange = (event) => {
-        //console.log('clicked on change');
+        console.log('clicked on change');
         setText(event.target.value);
 
     }
+   
     //setText("helo");
     return (
         <>
-            <div className='container' style={{color : props.mode==='dark'?'white':'black'}}>
+            <div className='container' style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                 <h1>{props.heading}</h1>
                 <div className="mb-3">
-                    <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" style={{backgroundColor:props.mode==='dark'?'grey':'white' ,color:props.mode==='dark'?'white':'black'}}></textarea>
+                    <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" style={{ backgroundColor: props.mode === 'dark' ? 'grey' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}></textarea>
                 </div>
-                <button className='btn btn-primary' onClick={handleUpClick}>Convert to uppercase</button> <></>
-                <button className='btn btn-secondary' onClick={handleDownClick}>Convert to lowercase</button> <></>
-                <button className='btn btn-warning' onClick={handleClClick}>Clear content</button>
+                <div className="buttonss">
+                    <button className='btn btn-primary my-1' onClick={handleUpClick}>Convert to uppercase</button> <></>
+                    <button className='btn btn-secondary my-1' onClick={handleDownClick}>Convert to lowercase</button> <></>
+                    <button className='btn btn-warning my-1' onClick={handleClClick}>Clear content</button>
+                </div>
             </div>
-            <div className="container my-2" style={{color : props.mode==='dark'?'white':'black'}}>
+            <div className="container my-2" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                 <h1>Your text summary</h1>
-                <p>{text.split(" ").length } words, {text.length} characters. </p>
+                <p>{text.split(" ").length} words, {text.length} characters. </p>
                 <p> <strong>Average time you might take to read this is : {0.008 * text.split(" ").length} minutes. </strong></p>
                 <h3>Preview</h3>
-                <p>{text.length>0?text:"Enter something in the text box to preview here."}</p>
+                <p>{text.length > 0 ? text : "Enter something in the text box to preview here."}</p>
             </div>
         </>
     )
